@@ -1,0 +1,54 @@
+---
+import { course } from '../data/course.ts';
+
+const links = [
+  { href: '#overview', label: 'Overview' },
+  { href: '#schedule', label: 'Schedule' },
+  { href: '#assignments', label: 'Assignments' },
+  { href: '#policies', label: 'Policies' },
+  { href: '#instructor', label: 'Instructor' },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-line-dark bg-ink text-paper">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
+    <a href="#top" class="label whitespace-nowrap text-paper hover:text-accent">
+      {course.title}
+    </a>
+
+    <ul class="hidden items-center gap-6 md:flex">
+      {
+        links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              class="label text-paper/70 transition-colors hover:text-paper"
+            >
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- progress readout -->
+    <div class="flex items-center gap-3">
+      <span class="label hidden tabular-nums text-paper/60 sm:inline">
+        <span data-progress-done>0</span>/<span data-progress-total>0</span>
+        <span class="text-accent">·</span>
+        <span data-progress-pct>0%</span>
+      </span>
+      <span class="label text-paper/40">READ</span>
+    </div>
+  </nav>
+
+  <!-- progress bar: scaleX driven by progress.ts -->
+  <div class="h-[3px] w-full bg-line-dark" aria-hidden="true">
+    <div
+      data-progress-bar
+      class="h-full origin-left bg-accent transition-transform duration-500 ease-out"
+      style="transform: scaleX(0)"
+    >
+    </div>
+  </div>
+</header>

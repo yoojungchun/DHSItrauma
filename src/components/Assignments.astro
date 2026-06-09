@@ -1,0 +1,25 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { assignments } from '../data/course.ts';
+---
+
+<section id="assignments" class="border-t border-line bg-paper-pure">
+  <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+    <SectionHeading numeral="03 / Work" title="Assignments" />
+
+    <div class="reveal mt-10 grid gap-px border border-line bg-line sm:grid-cols-3">
+      {
+        assignments.map((a, i) => (
+          <article class="flex flex-col bg-paper-pure p-6 sm:p-8">
+            <span class="font-display text-5xl font-semibold leading-none text-ink/15">
+              0{i + 1}
+            </span>
+            <h3 class="mt-6 font-display text-xl font-medium leading-tight">{a.name}</h3>
+            <p class="label mt-3 text-accent">{a.when}</p>
+            <p class="mt-4 leading-relaxed text-ink/80">{a.detail}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

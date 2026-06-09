@@ -1,0 +1,27 @@
+---
+interface Props {
+  id: string;
+  author?: string;
+  title: string;
+  note?: string;
+}
+const { id, author, title, note } = Astro.props;
+const inputId = `chk-${id}`;
+---
+
+<li class="group flex items-start gap-3 py-2">
+  <input
+    type="checkbox"
+    id={inputId}
+    data-reading={id}
+    class="mt-1 h-4 w-4 shrink-0 cursor-pointer appearance-none border border-ink bg-paper-pure transition-colors checked:border-accent checked:bg-accent"
+  />
+  <label for={inputId} class="cursor-pointer select-none leading-snug">
+    {author && <span class="font-medium text-ink group-has-[:checked]:line-through group-has-[:checked]:text-muted">{author}</span>}
+    {author && <span class="text-muted">, </span>}
+    <span class="text-ink group-has-[:checked]:text-muted group-has-[:checked]:line-through">
+      <em class="not-italic">{title}</em>
+    </span>
+    {note && <span class="block font-mono text-xs leading-relaxed text-muted">{note}</span>}
+  </label>
+</li>

@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Overview from '../components/Overview.astro';
+import Schedule from '../components/Schedule.astro';
+import Assignments from '../components/Assignments.astro';
+import Policies from '../components/Policies.astro';
+import Instructor from '../components/Instructor.astro';
+import { course } from '../data/course.ts';
+---
+
+<Base>
+  <Nav />
+  <main>
+    <Hero />
+    <Overview />
+    <Schedule />
+    <Assignments />
+    <Policies />
+    <Instructor />
+  </main>
+
+  <footer class="border-t border-line-dark bg-ink text-paper">
+    <div
+      class="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-8"
+    >
+      <p class="label text-paper/50">{course.title} · {course.term}</p>
+      <p class="label text-paper/30">Suffering and Spectacle from Shakespeare to TikTok</p>
+    </div>
+  </footer>
+</Base>

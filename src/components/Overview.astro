@@ -1,0 +1,28 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { course } from '../data/course.ts';
+---
+
+<section id="overview" class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+  <SectionHeading numeral="01 / Overview" title="The Course" />
+
+  <div class="reveal mt-10 grid gap-12 lg:grid-cols-[1.5fr_1fr]">
+    <div class="space-y-5 text-lg leading-relaxed text-ink/90 sm:text-xl">
+      {course.description.map((p) => <p>{p}</p>)}
+    </div>
+
+    <aside class="border-t-2 border-ink pt-6">
+      <p class="label text-accent">The questions we hold</p>
+      <ol class="mt-6 space-y-6">
+        {
+          course.questions.map((q, i) => (
+            <li class="flex gap-4">
+              <span class="font-mono text-sm text-muted">0{i + 1}</span>
+              <span class="font-display text-lg leading-snug">{q}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </aside>
+  </div>
+</section>

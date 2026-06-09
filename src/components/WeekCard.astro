@@ -1,0 +1,90 @@
+---
+import ReadingItem from './ReadingItem.astro';
+
+interface Reading {
+  id: string;
+  author?: string;
+  title: string;
+  note?: string;
+}
+interface Props {
+  week: number;
+  theme: string;
+  due?: string[];
+  readings: {
+    primary: Reading[];
+    secondary: Reading[];
+    optional: Reading[];
+  };
+}
+const { week, theme, due = [], readings } = Astro.props;
+
+const groups = [
+  { label: 'Primary', items: readings.primary },
+  { label: 'Secondary', items: readings.secondary },
+  { label: 'Optional', items: readings.optional },
+].filter((g) => g.items.length > 0);
+
+const num = String(week).padStart(2, '0');
+// open the first week by default so the interaction is discoverable
+const openByDefault = week === 1;
+---
+
+<details
+  class="reveal group border-b border-line bg-paper open:bg-paper-pure"
+  open={openByDefault}
+>
+  <summary
+    class="flex items-center gap-5 px-5 py-6 transition-colors hover:bg-paper-pure sm:px-8"
+  >
+    <span
+      class="font-display text-4xl font-semibold leading-none tabular-nums text-ink/25 transition-colors group-open:text-accent sm:text-6xl"
+    >
+      {num}
+    </span>
+
+    <div class="min-w-0 flex-1">
+      <span class="label text-muted">Week {week}</span>
+      <h4 class="mt-1 font-display text-xl font-medium leading-tight tracking-tight sm:text-2xl">
+        {theme}
+      </h4>
+      {
+        due.length > 0 && (
+          <div class="mt-2 flex flex-wrap gap-2">
+            {due.map((d) => (
+              <span class="label inline-block bg-accent px-2 py-1 text-paper-pure">
+                Due · {d}
+              </span>
+            ))}
+          </div>
+        )
+      }
+    </div>
+
+    <!-- +/- indicator -->
+    <span
+      class="relative ml-2 h-5 w-5 shrink-0 self-start"
+      aria-hidden="true"
+    >
+      <span class="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-ink"></span>
+      <span
+        class="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-ink transition-transform duration-300 group-open:rotate-90 group-open:opacity-0"
+      ></span>
+    </span>
+  </summary>
+
+  <div class="grid gap-8 px-5 pb-8 pl-5 sm:grid-cols-[auto_1fr] sm:gap-12 sm:px-8 sm:pl-[6.5rem]">
+    {
+      groups.map((g) => (
+        <div class="sm:contents">
+          <p class="label mb-2 text-accent sm:mb-0 sm:pt-1 sm:text-right">{g.label}</p>
+          <ul class="mb-6 border-l border-line pl-4 sm:mb-0 sm:border-l-0 sm:pl-0">
+            {g.items.map((r) => (
+              <ReadingItem id={r.id} author={r.author} title={r.title} note={r.note} />
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</details>

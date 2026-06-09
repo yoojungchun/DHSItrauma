@@ -1,0 +1,39 @@
+---
+import { course } from '../data/course.ts';
+---
+
+<section id="top" class="border-b border-line-dark bg-ink text-paper">
+  <div class="mx-auto max-w-7xl px-5 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-24">
+    <p class="label text-accent">{course.code} · {course.term}</p>
+
+    <h1
+      class="mt-6 font-display text-[clamp(2.75rem,11vw,9rem)] font-semibold uppercase leading-[0.88] tracking-tight"
+    >
+      {course.title}
+    </h1>
+
+    <p
+      class="mt-6 max-w-3xl font-display text-[clamp(1.1rem,3.2vw,2rem)] font-normal leading-tight text-paper/80"
+    >
+      {course.subtitle}
+    </p>
+
+    <!-- meta row -->
+    <dl
+      class="mt-12 grid grid-cols-1 gap-px border border-line-dark bg-line-dark sm:grid-cols-3"
+    >
+      <div class="bg-ink px-5 py-5">
+        <dt class="label text-paper/40">Instructor</dt>
+        <dd class="mt-2 font-display text-lg">{course.instructor}</dd>
+      </div>
+      <div class="bg-ink px-5 py-5">
+        <dt class="label text-paper/40">Meets</dt>
+        <dd class="mt-2 font-display text-lg">{course.meeting}</dd>
+      </div>
+      <div class="bg-ink px-5 py-5">
+        <dt class="label text-paper/40">Term</dt>
+        <dd class="mt-2 font-display text-lg">{course.term}</dd>
+      </div>
+    </dl>
+  </div>
+</section>

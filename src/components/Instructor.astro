@@ -1,0 +1,34 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { course } from '../data/course.ts';
+---
+
+<section id="instructor" class="border-t border-line bg-ink text-paper">
+  <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+    <div class="flex items-end gap-5 border-b-2 border-paper pb-4">
+      <span class="label shrink-0 text-accent">05 / Contact</span>
+      <h2 class="font-display text-[clamp(1.75rem,6vw,4rem)] font-semibold uppercase leading-[0.9] tracking-tight">
+        Instructor
+      </h2>
+    </div>
+
+    <div class="reveal mt-10 grid gap-px border border-line-dark bg-line-dark sm:grid-cols-2">
+      <div class="bg-ink p-6 sm:p-8">
+        <p class="label text-paper/40">Name</p>
+        <p class="mt-2 font-display text-2xl">{course.instructor}</p>
+      </div>
+      <div class="bg-ink p-6 sm:p-8">
+        <p class="label text-paper/40">Office Hours</p>
+        <p class="mt-2 font-display text-2xl">TBD</p>
+      </div>
+      <div class="bg-ink p-6 sm:p-8">
+        <p class="label text-paper/40">Email</p>
+        <p class="mt-2 font-display text-2xl">TBD</p>
+      </div>
+      <div class="bg-ink p-6 sm:p-8">
+        <p class="label text-paper/40">Meeting</p>
+        <p class="mt-2 font-display text-2xl">{course.meeting}</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+---
+interface Props {
+  numeral: string;
+  title: string;
+  range: string;
+}
+const { numeral, title, range } = Astro.props;
+---
+
+<div class="reveal mt-px border-y border-line-dark bg-ink text-paper">
+  <div
+    class="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-8 sm:flex-row sm:items-baseline sm:justify-between sm:px-8"
+  >
+    <div class="flex items-baseline gap-4">
+      <span class="font-display text-4xl font-semibold text-accent sm:text-5xl">{numeral}</span>
+      <h3 class="font-display text-xl font-medium uppercase leading-tight tracking-tight sm:text-2xl">
+        {title}
+      </h3>
+    </div>
+    <span class="label shrink-0 text-paper/40">{range}</span>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHeading from './SectionHeading.astro';
+import SectionDivider from './SectionDivider.astro';
+import WeekCard from './WeekCard.astro';
+import { sections } from '../data/course.ts';
+
+const weeks = (await getCollection('weeks')).sort(
+  (a, b) => a.data.week - b.data.week,
+);
+---
+
+<section id="schedule" class="border-t border-line bg-paper-pure">
+  <div class="mx-auto max-w-7xl px-5 pt-20 sm:px-8 sm:pt-28">
+    <SectionHeading numeral="02 / Arc" title="The Schedule" />
+    <p class="reveal mt-6 max-w-2xl leading-relaxed text-ink/70">
+      Fourteen weeks in four movements. Expand any week for its readings; check
+      a text off as you finish it — your progress is saved in this browser.
+    </p>
+  </div>
+
+  <div class="mt-12">
+    {
+      sections.map((section) => {
+        const sectionWeeks = weeks.filter((w) => w.data.section === section.id);
+        const [from, to] = section.weeks;
+        return (
+          <>
+            <SectionDivider
+              numeral={section.numeral}
+              title={section.title}
+              range={`Weeks ${from}–${to}`}
+            />
+            <div class="mx-auto max-w-7xl">
+              {sectionWeeks.map((w) => (
+                <WeekCard
+                  week={w.data.week}
+                  theme={w.data.theme}
+                  due={w.data.due}
+                  readings={w.data.readings}
+                />
+              ))}
+            </div>
+          </>
+        );
+      })
+    }
+  </div>
+</section>
