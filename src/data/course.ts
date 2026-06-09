@@ -8,8 +8,8 @@ export const course = {
   title: 'The Trauma Plot',
   subtitle: 'Suffering and Spectacle from Shakespeare to TikTok',
   code: 'ENGL TBD',
-  term: 'TBD — e.g. Spring 2026',
-  instructor: 'TBD — Instructor Name',
+  term: 'Spring 2027',
+  instructor: 'Yoojung Chun',
   meeting: 'TBD — Days / Time / Room',
 
   /** Full course description, verbatim. */
