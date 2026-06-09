@@ -11,7 +11,7 @@ progress tracker that saves to the student's browser.
 
 ```bash
 npm install
-npm run dev      # http://localhost:4321/dhsitrauma/
+npm run dev      # http://localhost:4321/DHSItrauma/
 ```
 
 | Command           | Action                                       |
@@ -45,7 +45,8 @@ publishes it to GitHub Pages.
 **GitHub Actions**.
 
 The site is served from a subpath, so `astro.config.mjs` sets
-`base: '/dhsitrauma/'`. If the repository is renamed, update `base` and `site` to
-match.
+`base: '/DHSItrauma/'` — this must match the repository name's casing exactly,
+since GitHub Pages serves paths case-sensitively. If the repository is renamed,
+update `base` and `site` to match.
 
-Live URL: `https://yoojungchun.github.io/dhsitrauma/`
+Live URL: `https://yoojungchun.github.io/DHSItrauma/`
